@@ -2,16 +2,16 @@
 #include "lists.h"
 
 /**
- * all_free - a function for handling custom memory
- * @all: flags
+ * free_all - custom memory handling function
+ * @all: flag to indicate what to free
  */
-void all_free(int all)
+void free_all(int all)
 {
 	if (data.line)
 	{
 		free(data.line);
 		data.line = NULL;
-		everything_free(data.words);
+		free_everything(data.words);
 		data.words = NULL;
 	}
 
@@ -19,7 +19,7 @@ void all_free(int all)
 	{
 		if (data.stack)
 		{
-			dlistfree(data.stack);
+			free_dlistint(data.stack);
 			data.stack = NULL;
 		}
 		if (data.fptr)
